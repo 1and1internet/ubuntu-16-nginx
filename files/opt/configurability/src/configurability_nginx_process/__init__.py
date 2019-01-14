@@ -121,16 +121,18 @@ def process(name, config, directory, config_translator=None):
 
         gzip = False
 
-        if custom_values['gzip'].strip().upper() != 'OFF':
+        if custom_values[gzip_key].strip().upper() != 'OFF':
             gzip = True
             gzip_level = custom_values[gzip_key]
+        else:
+            gzip_level = '0'
 
         #
         #  Update the nginx configuration
         #
 
         gzip_command_regex = re.compile('gzip \w*;')
-        new_gzip_command = 'gzip %s;' % 'on' if gzip else 'off'
+        new_gzip_command = 'gzip on;' if gzip else 'gzip off;'
 
         if gzip:
             gzip_level_command_regex = re.compile('gzip_comp_level \d*;')
