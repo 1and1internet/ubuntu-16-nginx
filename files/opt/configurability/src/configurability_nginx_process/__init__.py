@@ -121,9 +121,11 @@ def process(name, config, directory, config_translator=None):
 
         gzip = False
 
-        if custom_values['gzip'].strip().upper() != 'OFF':
+        if custom_values[gzip_key].strip().upper() != 'OFF':
             gzip = True
             gzip_level = custom_values[gzip_key]
+        else:
+            gzip_level = '0'
 
         #
         #  Update the nginx configuration
