@@ -132,7 +132,7 @@ def process(name, config, directory, config_translator=None):
         #
 
         gzip_command_regex = re.compile('gzip \w*;')
-        new_gzip_command = 'gzip %s;' % 'on' if gzip else 'off'
+        new_gzip_command = 'gzip on;' if gzip else 'gzip off;'
 
         if gzip:
             gzip_level_command_regex = re.compile('gzip_comp_level \d*;')
